@@ -1,0 +1,114 @@
+header {
+    display: flex;
+    justify-content: center;
+    background-color: blueviolet;
+    padding: 30px;
+    color: aliceblue;
+    font-size: 25px;
+}
+
+h2 {
+    font-weight: 700;
+}
+
+.secciones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 300px 30px 300px;
+    padding: 30px;
+    gap: 10px;
+    background-color: aqua;
+    border-radius: 30px;
+}
+#seccion1 {
+    background-color: blue;
+}
+
+
+.tecnologias {
+    display: flex;
+    justify-content: center;
+}
+
+.img-tecnologia {
+    height: 250px;
+    width: 200px;
+    margin: 30px;
+    transition: 0.3s;
+}
+
+.img-tecnologia:hover {
+    transform: scale(1.1);
+}
+
+#seccion2 {
+    background-color: cadetblue;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+input {
+    border-radius: 10px;
+    height: 30px;
+}
+
+button {
+    align-self: center;
+    border-radius: 10px;
+    background-color: brown;
+    color: aliceblue;
+    margin-top: 20px;
+    width: 80px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: red;
+    transform: scale(1.1);
+}
+
+.actividades {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: aquamarine;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: bisque;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 15px;
+    padding: 20px;
+    gap: 18px;
+}
+
+.cards > span {
+    display: flex;
+    justify-content: center;
+    align-self: end;
+    border-radius: 10px;
+    width: 23px;
+    background-color: red;
+    cursor: pointer;
+}
+
+.cards > h3 {
+    font-weight: 500;
+}
+
+.cards > img {
+    width: 300px;
+    height: 300px;
+}
