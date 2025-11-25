@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/styles.css">
 
+    <script src="./scripts/index.js"></script>
+
     <title>Mi Presentacion</title>
 </head>
 <body>
@@ -25,37 +27,44 @@
 
         <section class="secciones" id="seccion1">
             <h2>Mis Tecnologias Favoritas</h2>
-            <div class="tecnologias">
-                <img class="img-tecnologia" src="./assets/HTML5_logo_and_wordmark.svg.png">
-                <img class="img-tecnologia" src="/assets/CSS3_logo_and_wordmark.svg.png">
-                <img class="img-tecnologia" src="./assets/Javascript-shield.svg.png">
-            </div>
+            <article class="tecnologias">
+                <img class="img-tecnologia" src="./assets/HTML5_logo_and_wordmark.svg.png" alt="Imagen HTML">
+                <img class="img-tecnologia" src="/assets/CSS3_logo_and_wordmark.svg.png" alt="Imagen CSS">
+                <img class="img-tecnologia" src="./assets/Javascript-shield.svg.png" alt="Imagen Javascript">
+            </article>
+            
         </section>
 
         <section class="secciones" id="seccion2">
             <h2>Mis Actividades Favoritas</h2>
-            <form>
-                <label>TITULO</label>
-                <input type="text">
+            <article>
+                <form>
+                    <label>TITULO</label>
+                    <input type="text">
 
-                <label>DESCRIPCION</label>
-                <input type="text" cols="30" rows="10">
+                    <label>DESCRIPCION</label>
+                    <textarea cols="30" rows="10"></textarea>
 
-                <label>URL IMAGEN</label>
-                <input type="url">
+                    <label>URL IMAGEN</label>
+                    <input type="url">
 
-                <button type="button">CREAR</button>
-            </form>
+                    <button type="button">CREAR</button>
+                </form>
+            </article>
+            
         </section>
 
         <section class="actividades">
-            <h2>Actividades</h2>
-            <div class="cards">
-                <span>X</span>
-                <h3>Actividad</h3>
-                <img src="https://liberate.mx/wp-content/uploads/2022/09/beneficios-de-caminar.jpg">
-                <p>Descripcion</p>
-            </div>
+            <h2>ACTIVIDADES</h2>
+            <article>
+                <div class="cards">
+                    <span>X</span>
+                    <h3>Actividad</h3>
+                    <img src="https://liberate.mx/wp-content/uploads/2022/09/beneficios-de-caminar.jpg">
+                    <p>Descripcion</p>
+                </div>
+            </article>
+            
         </section>
         
     </main>
