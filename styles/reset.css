@@ -1,0 +1,138 @@
+/* 1) Box sizing consistente */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* 2) Quitar márgenes por defecto en elementos comunes */
+body, h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd {
+    margin: 0;
+}
+
+/* 3) Ajustes base del documento */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    hanging-punctuation: first last; /* mejora tipográfica en navegadores modernos */
+}
+
+/* 4) Tipografía y suaves mejoras de legibilidad */
+body {
+    min-height: 100dvh;
+    line-height: 1.5;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* 5) Encabezados: sin márgenes y mejor corte de líneas donde esté disponible */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+    line-height: 1.2;
+    text-wrap: balance; /* ignora si no está soportado */
+}
+
+/* 6) Listas sin estilos por defecto cuando se usen como UI */
+ul[role="list"], ol[role="list"] {
+    list-style: none;
+    padding: 0;
+}
+
+/* 7) Enlaces sin subrayado intrusivo por defecto, pero con foco accesible */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+/* 8) Imágenes y medios: responsivos por defecto */
+img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    max-width: 100%;
+}
+img, svg, video, canvas {
+    height: auto;
+}
+
+/* 9) Formularios: heredar tipografía y resetear estilos intrusivos */
+input, button, textarea, select {
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+}
+button, input[type="button"], input[type="submit"], input[type="reset"] {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+textarea {
+    resize: vertical; /* permitir sólo vertical por defecto */
+}
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+label {
+    cursor: pointer;
+}
+
+/* 10) Tablas: layout predecible */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+}
+th, td {
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* 11) Citas y elementos semánticos */
+blockquote, q {
+    quotes: none;
+}
+blockquote::before, blockquote::after,
+q::before, q::after {
+    content: "";
+}
+
+/* 12) Elementos code/pre */
+pre, code, kbd, samp {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 1em;
+}
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+/* 13) Ocultamiento accesible (para helpers utilitarios) */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0);
+    white-space: nowrap; border: 0;
+}
+
+/* 14) Preferencia de movimiento reducido: desactivar animaciones/transiciones largas */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    }
+}
+
+/* 15) Contenedores: evita scroll horizontal accidental */
+#root, #__next {
+    isolation: isolate;
+}
