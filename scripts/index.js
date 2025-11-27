@@ -28,7 +28,7 @@ class Repository {
 }
 
 const newRepository = new Repository()
-const createButton = document.getElementById('createButton')
+const createButton = document.querySelector('#createButton')
 
 const JStoHTML = (activity) => {
     const { id, title, description, imgUrl } = activity
@@ -36,8 +36,8 @@ const JStoHTML = (activity) => {
     const card = document.createElement('div')
     const titleElement = document.createElement('h3')
     const x = document.createElement('span')
-    const descriptionElement = document.createElement('p')
     const imgUrlElement = document.createElement('img')
+    const descriptionElement = document.createElement('p')
 
     titleElement.innerHTML = title
     descriptionElement.innerHTML = description
@@ -58,8 +58,8 @@ const JStoHTML = (activity) => {
     return card
 }
 
-const renderAllActivities = () => {
-    const container = document.getElementById('activitiesContainer')
+const addToContainer = () => {
+    const container = document.querySelector('#activitiesContainer')
     container.innerHTML = ''
 
     const activities = newRepository.getAllActivities().map(JStoHTML)
@@ -69,16 +69,16 @@ const renderAllActivities = () => {
 
 const deleteActivityHandler = (id) => {
     newRepository.deleteActivity(id)
-    renderAllActivities()
+    addToContainer()
 }
 
 const createButtonHandler = () => {
-    let titleInput = document.getElementById('title').value
-    let descriptionInput = document.getElementById('description').value
-    let imgUrlInput = document.getElementById('imgUrl').value
+    let titleInput = document.querySelector('#title').value
+    let descriptionInput = document.querySelector('#description').value
+    let imgUrlInput = document.querySelector('#imgUrl').value
 
     if (!titleInput || !descriptionInput || !imgUrlInput) {
-        return 'Faltan completar datos. Todos los campos son obligatorios.'
+        return alert('Faltan completar datos. Todos los campos son obligatorios.')
     }
 
     newRepository.createActivity(titleInput, descriptionInput, imgUrlInput)
@@ -87,7 +87,7 @@ const createButtonHandler = () => {
     descriptionInput = ''
     imgUrlInput = ''
 
-    renderAllActivities()
+    addToContainer()
 }
 
 createButton.addEventListener('click', createButtonHandler)
