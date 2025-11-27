@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/styles.css">
 
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" defer></script>
 
     <title>Mi Presentacion</title>
 </head>
@@ -40,15 +40,15 @@
             <article>
                 <form>
                     <label>TITULO</label>
-                    <input type="text">
+                    <input id='title' type="text">
 
                     <label>DESCRIPCION</label>
-                    <textarea cols="30" rows="10"></textarea>
+                    <textarea id='description' cols="30" rows="10"></textarea>
 
                     <label>URL IMAGEN</label>
-                    <input type="url">
+                    <input id='imgUrl' type="url">
 
-                    <button type="button">CREAR</button>
+                    <button id='createButton' type="button">CREAR</button>
                 </form>
             </article>
             
@@ -56,13 +56,7 @@
 
         <section class="actividades">
             <h2>ACTIVIDADES</h2>
-            <article>
-                <div class="cards">
-                    <span>X</span>
-                    <h3>Actividad</h3>
-                    <img src="https://liberate.mx/wp-content/uploads/2022/09/beneficios-de-caminar.jpg">
-                    <p>Descripcion</p>
-                </div>
+            <article class='container' id="activitiesContainer">
             </article>
             
         </section>

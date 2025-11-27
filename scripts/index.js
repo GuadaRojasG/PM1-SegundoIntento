@@ -10,23 +10,84 @@ class Activity {
 class Repository {
     constructor() {
         this.activities = []
-        this.contador = 0
+        this.id = 0
     }
 
-    getAllActivities() {
-        return this.activities
-    }
+    getAllActivities = () => this.activities
 
-    createActivity(title, description, imgUrl) {
-        const activity = new Activity(this.contador, title, description, imgUrl)
+    createActivity = (title, description, imgUrl) => {
+        const activity = new Activity(this.id, title, description, imgUrl)
         this.activities.push(activity)
-        this.contador ++
+        this.id ++
         return activity
     }
 
-    deleteActivity(id) {
+    deleteActivity = (id) => {
         this.activities = this.activities.filter( (activity) => activity.id !== id )
     }
 }
 
-const repository = new Repository()
+const newRepository = new Repository()
+const createButton = document.getElementById('createButton')
+
+const JStoHTML = (activity) => {
+    const { id, title, description, imgUrl } = activity
+
+    const card = document.createElement('div')
+    const titleElement = document.createElement('h3')
+    const x = document.createElement('span')
+    const descriptionElement = document.createElement('p')
+    const imgUrlElement = document.createElement('img')
+
+    titleElement.innerHTML = title
+    descriptionElement.innerHTML = description
+    imgUrlElement.src = imgUrl
+    imgUrlElement.alt = title
+    x.innerHTML = 'X'
+
+    card.id = `activity-${id}`
+    card.classList.add('cards')
+
+    card.appendChild(x)
+    card.appendChild(titleElement)
+    card.appendChild(imgUrlElement)
+    card.appendChild(descriptionElement)
+
+    x.addEventListener('click', () => deleteActivityHandler(id))
+
+    return card
+}
+
+const renderAllActivities = () => {
+    const container = document.getElementById('activitiesContainer')
+    container.innerHTML = ''
+
+    const activities = newRepository.getAllActivities().map(JStoHTML)
+
+    activities.forEach( activity => container.appendChild(activity) )
+}
+
+const deleteActivityHandler = (id) => {
+    newRepository.deleteActivity(id)
+    renderAllActivities()
+}
+
+const createButtonHandler = () => {
+    let titleInput = document.getElementById('title').value
+    let descriptionInput = document.getElementById('description').value
+    let imgUrlInput = document.getElementById('imgUrl').value
+
+    if (!titleInput || !descriptionInput || !imgUrlInput) {
+        return 'Faltan completar datos. Todos los campos son obligatorios.'
+    }
+
+    newRepository.createActivity(titleInput, descriptionInput, imgUrlInput)
+
+    titleInput = ''
+    descriptionInput = ''
+    imgUrlInput = ''
+
+    renderAllActivities()
+}
+
+createButton.addEventListener('click', createButtonHandler)
