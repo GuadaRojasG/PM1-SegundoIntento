@@ -1,57 +1,64 @@
-// ToDoList
+// repository
 
 // - Debe ser una clase
 // - Debe tener los metodos:
-//      -getToDos(): Debe retornar la lista de tareas
-//      - addToDo(): Deberia pushear al array una tarea nueva
+//      -getToDos(): Debe retornar la repository de tareas
+//      - createActivity(): Deberia pushear al array una tarea nueva
 //      - deleteToDo(): Deberia eliminar la ultima tarea
 
-import ToDoList from "../../src/index.mjs"
+import { Activity, Repository } from "../../src/index.mjs"
 
-describe('La clase ToDoList', () => {
+describe('La clase Repository', () => {
+
     it('Debe ser una clase', () => {
-        expect(typeof ToDoList.prototype.constructor).toBe('function')
+        expect(typeof Repository.prototype.constructor).toBe('function')
     })
 
-    it('Debe tener implementado el metodo getToDos()', () => {
-        const lista = new ToDoList()
-        expect(lista.getToDos).toBeDefined()
-    })
-
-
-    it('Debe tener implementado el metodo addToDo()', () => {
-        const lista = new ToDoList()
-        expect(lista.addToDo).toBeDefined()
+    it('Debe tener implementado el metodo getAllActivities()', () => {
+        const repository = new Repository()
+        expect(repository.getAllActivities).toBeDefined()
     })
 
 
-    it('Debe tener implementado el metodo deleteToDo()', () => {
-        const lista = new ToDoList()
-        expect(lista.deleteToDo).toBeDefined()
+    it('Debe tener implementado el metodo createActivity()', () => {
+        const repository = new Repository()
+        expect(repository.createActivity).toBeDefined()
     })
 
 
-    it('El metodo getToDos() debe retornar un array', () => {
-        const lista = new ToDoList()
-        expect(Array.isArray(lista.getToDos())).toBeTrue()
+    it('Debe tener implementado el metodo deleteActivity()', () => {
+        const repository = new Repository()
+        expect(repository.deleteActivity).toBeDefined()
     })
 
 
-    it('El metodo addToDo() debe agregar un nuevo elemento', () => {
-        const lista = new ToDoList()
-        lista.addToDo('Hacer la cama')
-        expect(lista.getToDos()).toContain('Hacer la cama')
+    it('El metodo getAllActivities() debe retornar un array', () => {
+        const repository = new Repository()
+        expect(Array.isArray(repository.getAllActivities())).toBeTrue()
     })
 
 
-    it('El metodo deleteToDo() debe eliminar la ultima tarea', () => {
-        const lista = new ToDoList()
-        lista.addToDo('A')
-        lista.addToDo('B')
-        lista.addToDo('C')
-        lista.deleteToDo()
-        expect(lista.getToDos()).toContain('A')
-        expect(lista.getToDos()).toContain('B')
-        expect(lista.getToDos()).not.toContain('C')
+    it('El metodo createActivity() debe agregar un nuevo elemento', () => {
+        const repository = new Repository()
+        const activity = repository.createActivity('Correr', 'Me gusta correr', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsIaTSr08cC1RYKxUzCEZ2kq7n09AwsOi-pw&s')
+        expect(repository.getAllActivities()).toContain(activity)
+    })
+
+
+    it('El metodo deleteActivity() debe eliminar la ultima tarea', () => {
+        const repository = new Repository()
+        const activity1 = repository.createActivity('Correr', 'Me gusta correr', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsIaTSr08cC1RYKxUzCEZ2kq7n09AwsOi-pw&s')
+        const activity2 = repository.createActivity('Caminar', 'Me gusta caminar', 'https://image.tuasaude.com/media/article/wr/ai/caminar_71374.jpg')
+        const activity3 = repository.createActivity('Nadar', 'Me gusta nadar', 'https://unycos.com/cdn/shop/articles/Por_que_se_considera_tan_importante_saber_nadar.jpg?v=1718308685')
+        repository.deleteActivity(activity2.id)
+        expect(repository.getAllActivities()).toContain(activity1)
+        expect(repository.getAllActivities()).toContain(activity3)
+        expect(repository.getAllActivities()).not.toContain(activity2)
+    })
+})
+
+describe('La clase Activity', () => {
+  it('Debe ser una clase', () => {
+        expect(typeof Activity.prototype.constructor).toBe('function')
     })
 })

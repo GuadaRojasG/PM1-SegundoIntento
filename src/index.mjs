@@ -1,17 +1,30 @@
-class ToDoList {
-    constructor() {
-        this.ToDoList = []
-    }
-
-    getToDos = () => this.ToDoList
-
-    addToDo = (toDo) => {
-        this.ToDoList.push(toDo)
-    }
-
-    deleteToDo = (toDo) => {
-        this.ToDoList.pop()
+class Activity {
+    constructor(id, title, description, imgUrl) {
+        this.id = id
+        this.title = title
+        this.description = description
+        this.imgUrl = imgUrl
     }
 }
 
-export default ToDoList
+class Repository {
+    constructor() {
+        this.activities = []
+        this.id = 0
+    }
+
+    getAllActivities = () => this.activities
+
+    createActivity = (title, description, imgUrl) => {
+        const activity = new Activity(this.id, title, description, imgUrl)
+        this.activities.push(activity)
+        this.id ++
+        return activity
+    }
+
+    deleteActivity = (id) => {
+        this.activities = this.activities.filter( (activity) => activity.id !== id )
+    }
+}
+
+export { Activity, Repository };
