@@ -78,7 +78,8 @@ const createButtonHandler = () => {
     let imgUrlInput = document.querySelector('#imgUrl').value
 
     if (!titleInput || !descriptionInput || !imgUrlInput) {
-        return alert('Faltan completar datos. Todos los campos son obligatorios.')
+        alert('Faltan completar datos. Todos los campos son obligatorios.')
+        return
     }
 
     newRepository.createActivity(titleInput, descriptionInput, imgUrlInput)
