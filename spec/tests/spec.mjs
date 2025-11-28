@@ -1,17 +1,9 @@
-// repository
-
-// - Debe ser una clase
-// - Debe tener los metodos:
-//      -getToDos(): Debe retornar la repository de tareas
-//      - createActivity(): Deberia pushear al array una tarea nueva
-//      - deleteToDo(): Deberia eliminar la ultima tarea
-
 import { Activity, Repository } from "../../src/index.mjs"
 
 describe('La clase Repository', () => {
 
     it('Debe ser una clase', () => {
-        expect(typeof Repository.prototype.constructor).toBe('function')
+        expect(Repository).toBeInstanceOf(Function)
     })
 
     it('Debe tener implementado el metodo getAllActivities()', () => {
@@ -58,7 +50,14 @@ describe('La clase Repository', () => {
 })
 
 describe('La clase Activity', () => {
-  it('Debe ser una clase', () => {
-        expect(typeof Activity.prototype.constructor).toBe('function')
+    it('Debe ser una clase', () => {
+        expect(Activity).toBeInstanceOf(Function)
+    })
+
+    it('Debe poder ser instanciada', () => {
+        const activity = new Activity(0, 'Caminar', 'Me gusta caminar', 'https://image.tuasaude.com/media/article/wr/ai/caminar_71374.jpg')
+        expect(activity).toBeInstanceOf(Activity)
+        expect(activity.id).toBe(0)
+        
     })
 })
